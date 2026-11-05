@@ -1,4 +1,4 @@
-# Giovani Pascua — Data Analyst portfolio
+# Giovani Pascua — data analytics portfolio
 
 Live site: **https://gigpascua25.github.io**
 
