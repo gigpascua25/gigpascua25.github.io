@@ -16,7 +16,7 @@
 <a class="skip" href="#main">Skip to content</a>
 <div class="wrap">
   <header class="site-head">
-    <a class="site-name" href="../index.html">Giovani Pascua</a>
+    <div class="site-brand"><a class="site-name" href="../index.html">Giovani Pascua</a><span class="site-role">Data Analyst</span></div>
     <nav class="site-nav" aria-label="Site">
       <a href="../index.html#projects">Projects</a>
       <a href="../index.html#about">About</a>
@@ -33,11 +33,12 @@
       <p class="lede">A Python pipeline that uses a large language model to suggest three ranked biodiversity targets for each conservation grant, each supported by a quotation verified against the grant text.</p>
     </header>
     
-<dl class="facts"><div><dt>Team</dt><dd>Team of three. The project partner was a Philippine conservation foundation, which is not named here.</dd></div><div><dt>My contribution</dt><dd>I wrote all of the Python code for the classification pipeline described below.</dd></div><div><dt>AI assistance</dt><dd>I used AI tools to help draft the code, and reviewed and tested it myself.</dd></div><div><dt>Tools</dt><dd>Python, pandas and the OpenAI API (gpt-4o-mini) in Google Colab.</dd></div><div><dt>Data</dt><dd>339 grants tagged by the foundation's program managers and 201 untagged grants. None of this data is published.</dd></div></dl>
+<dl class="facts"><div><dt>Team</dt><dd>Team of three. The project partner was a Philippine conservation foundation, which is not named here.</dd></div><div><dt>My contribution</dt><dd>I wrote all of the Python code for the classification pipeline described below.</dd></div><div><dt>AI assistance</dt><dd>Following the bootcamp's approach, I used AI tools to help write the code, and reviewed and tested it myself.</dd></div><div><dt>Tools</dt><dd>Python, pandas and the OpenAI API (gpt-4o-mini) in Google Colab.</dd></div><div><dt>Data</dt><dd>339 grants tagged by the foundation's program managers and 201 untagged grants. None of this data is published.</dd></div></dl>
 
 <section class="case-section">
   <h2>Business question</h2>
   <p>The foundation reports to funders on how its grants align with the 23 targets of the Philippine Biodiversity Strategy and Action Plan (PBSAP) 2024–2040. Program managers currently tag each grant by hand. The team set out to answer two questions: can a language model reproduce the 339 existing human tags, and, if so, can it tag the 201 grants that have not yet been tagged?</p>
+  <p>The tool supports one team member's tagging work. Instead of reading all 23 targets for each grant, the reviewer checks three suggestions, each backed by a quotation from the grant.</p>
 </section>
 
 <section class="case-section">
@@ -52,28 +53,29 @@
 </section>
 
 <figure class="chart">
-  <figcaption class="chart-title">Agreement with the human tags</figcaption>
+  <figcaption class="chart-title">Where the correct target appeared among the three suggestions</figcaption>
   <div class="chart-scroll">
     <table class="bars">
       <thead class="visually-hidden"><tr><th scope="col">Category</th><th scope="col">Bar</th><th scope="col">Value</th></tr></thead>
       <tbody>
-        <tr title="Correct target among the top three: 88.79%"><th scope="row">Correct target among the top three</th><td><div class="track" style="--zero:0.00%"><div class="bar pos" style="--w:100.00%"></div></div></td><td class="val">88.79%</td></tr><tr title="Correct theme at first suggestion: 77.58%"><th scope="row">Correct theme at first suggestion</th><td><div class="track" style="--zero:0.00%"><div class="bar pos" style="--w:87.37%"></div></div></td><td class="val">77.58%</td></tr><tr title="Correct target at first suggestion: 32.74%"><th scope="row">Correct target at first suggestion</th><td><div class="track" style="--zero:0.00%"><div class="bar pos" style="--w:36.87%"></div></div></td><td class="val">32.74%</td></tr>
+        <tr title="First suggestion: 111 (32.7%)"><th scope="row">First suggestion</th><td><div class="track" style="--zero:0.00%"><div class="bar pos" style="--w:77.62%"></div></div></td><td class="val">111 (32.7%)</td></tr><tr title="Second suggestion: 143 (42.2%)"><th scope="row">Second suggestion</th><td><div class="track" style="--zero:0.00%"><div class="bar pos" style="--w:100.00%"></div></div></td><td class="val">143 (42.2%)</td></tr><tr title="Third suggestion: 47 (13.9%)"><th scope="row">Third suggestion</th><td><div class="track" style="--zero:0.00%"><div class="bar pos" style="--w:32.87%"></div></div></td><td class="val">47 (13.9%)</td></tr><tr title="Not among the three: 38 (11.2%)"><th scope="row">Not among the three</th><td><div class="track" style="--zero:0.00%"><div class="bar pos" style="--w:26.57%"></div></div></td><td class="val">38 (11.2%)</td></tr>
       </tbody>
     </table>
   </div>
-  <p class="chart-note">Measured on the 339 human-tagged grants. All figures are in-sample: the prompt rules were tuned on the same grants.</p>
+  <p class="chart-note">All 339 human-tagged grants. The correct target was among the three suggestions for 301 grants (88.79%). Figures are in-sample: the prompt rules were tuned on the same grants.</p>
 </figure>
 
 <section class="case-section">
   <h2>Key figures</h2>
-  <dl class="glance"><div><dt>Human-tagged grants tested</dt><span class="leader" aria-hidden="true"></span><dd>339</dd></div><div><dt>Correct target among the top three</dt><span class="leader" aria-hidden="true"></span><dd>301 of 339 (88.79%)</dd></div><div><dt>Evidence quotations verified in the text</dt><span class="leader" aria-hidden="true"></span><dd>304 of 339</dd></div><div><dt>Untagged grants processed</dt><span class="leader" aria-hidden="true"></span><dd>201</dd></div><div><dt>Untagged grants with no objectives text</dt><span class="leader" aria-hidden="true"></span><dd>187</dd></div></dl>
+  <dl class="glance"><div><dt>Single-answer version, first attempt</dt><span class="leader" aria-hidden="true"></span><dd>67%</dd></div><div><dt>Single-answer version with added rules (four runs)</dt><span class="leader" aria-hidden="true"></span><dd>62–68%</dd></div><div><dt>Correct target among the three suggestions</dt><span class="leader" aria-hidden="true"></span><dd>301 of 339 (88.79%)</dd></div><div><dt>Correct target as the first suggestion</dt><span class="leader" aria-hidden="true"></span><dd>111 of 339 (32.74%)</dd></div><div><dt>Correct theme at the first suggestion</dt><span class="leader" aria-hidden="true"></span><dd>77.58%</dd></div><div><dt>Evidence quotations verified in the text</dt><span class="leader" aria-hidden="true"></span><dd>304 of 339</dd></div><div><dt>Untagged grants processed (187 with no objectives)</dt><span class="leader" aria-hidden="true"></span><dd>201</dd></div></dl>
 </section>
 
 <section class="case-section">
   <h2>Findings</h2>
   <ul>
-    <li><strong>Changing the output format improved accuracy more than adding rules.</strong> Adding tie-break rules and worked examples to a single-answer prompt did not improve accuracy beyond run-to-run variation. Asking for a ranked shortlist of three targets did.</li>
-    <li><strong>Theme-level accuracy is higher than target-level accuracy.</strong> The first suggestion matched the theme of the human tag for 77.58% of grants, but the exact target for 32.74%. The tool is therefore best used as a drafting aid, with reviewers choosing among three suggestions instead of 23 targets.</li>
+    <li><strong>Why the tool suggests three targets instead of one.</strong> The first version asked for a single target and matched the human tag for 67% of grants. Adding tie-break rules and worked examples did not improve on this: four runs scored between 62% and 68%, within run-to-run variation. The team then asked the model for a ranked shortlist of three. The correct target appeared in the shortlist for 88.79% of grants, but it was the first suggestion for only 32.74% and was more often the second (42.2%). Because the shortlist is reliable but its ordering is not, the tool presents all three suggestions and a reviewer makes the final choice.</li>
+    <li><strong>The model identifies the theme more reliably than the exact target.</strong> The first suggestion matched the theme of the human tag for 77.58% of grants. The tool is therefore best used as a drafting aid that narrows 23 targets to three, not as a replacement for human tagging.</li>
+    <li><strong>Misses cluster around one boundary.</strong> Of the 38 grants with no correct target among the three suggestions, 12 had been tagged Target 3 by program managers, and the model read 11 of those as Target 1. The distinction between managing a site and planning for one accounts for about a third of all misses.</li>
     <li><strong>Most untagged grants lack objectives text.</strong> 187 of the 201 untagged grants have no objectives, so they were tagged from the title alone and every one was flagged for review.</li>
   </ul>
 </section>

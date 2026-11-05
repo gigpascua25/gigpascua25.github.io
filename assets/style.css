@@ -337,3 +337,6 @@ code {
 .case > *, .chart > * { min-width: 0; }
 .case-section > *, .files > * { min-width: 0; }
 .file-link strong { overflow-wrap: anywhere; }
+
+.site-brand { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.7rem; }
+.site-role { color: var(--ink-2); font-size: var(--step--1); }

@@ -1,4 +1,4 @@
-# Giovani Pascua — data analytics portfolio
+# Giovani Pascua — Data Analyst portfolio
 
 Live site: **https://gigpascua25.github.io**
 
@@ -12,9 +12,9 @@ I am a Senior Associate at WTW, where I prepare monthly and quarterly UK pension
 | [LLM-assisted grant classification](https://gigpascua25.github.io/projects/grant-tagging-llm.html) | Suggests three ranked biodiversity targets per grant, each with a verified evidence quotation. | Team of three; wrote all of the Python code. | Python, OpenAI API, pandas | [notebook](projects/grant-tagging-llm/pbsap_grant_tagging.ipynb) |
 | [Customer activity versus declared income](https://gigpascua25.github.io/projects/aml-alert-triage.html) | Compares customers' 2025 transactions with their declared income for an AML team (synthetic data). | Team of six; wrote the executive summary and business context, and carried out Investigation 4 (this analysis). | SQL (BigQuery), Python | [notebook](projects/aml-alert-triage/aml_declared_profile_vs_behaviour.ipynb) |
 | [Margin leakage analysis](https://gigpascua25.github.io/projects/discount-margin-analysis.html) | Tests five explanations for flat profit margin and finds deep discounting most strongly associated with losses. | Team of six; investigated the discounting explanation and presented those findings. | Spreadsheets | — |
-| [Discount governance dashboard](https://gigpascua25.github.io/projects/discount-governance-dashboard.html) | Five-page Power BI report evaluating whether deep discounts justify their cost. | Team of six; designed pages 2 and 3 and contributed to page 4. | Power BI | — |
+| [Discount governance dashboard](https://gigpascua25.github.io/projects/discount-governance-dashboard.html) | Five-page Power BI report evaluating whether deep discounts justify their cost. | Team of six; co-designed pages 2 and 3 with a teammate and contributed to page 4. | Power BI | — |
 
-I use AI tools to help draft code, and I review, test and validate every output myself.
+Following the bootcamp's approach, I use AI tools to help write code, and I review, test and validate every output myself.
 
 ## About the data
 
