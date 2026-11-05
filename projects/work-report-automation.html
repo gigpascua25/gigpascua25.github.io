@@ -33,7 +33,7 @@
       <p class="lede">Excel macros and rewritten process notes that cut the time my team spends preparing recurring UK pension reports. This is my day job at WTW, so no code, data or client names are published.</p>
     </header>
 
-<dl class="facts"><div><dt>Team</dt><dd>Special Projects team, UK pensions outsourcing, WTW Manila. April 2024 to present.</dd></div><div><dt>My contribution</dt><dd>I designed and built the tools on this page and rewrote the process notes. I also lead the process-documentation reviews for one of my team's two workstreams and train new colleagues.</dd></div><div><dt>AI assistance</dt><dd>I use AI tools to help write the VBA code. I design the steps, the checks and the outputs, and review and test every tool myself.</dd></div><div><dt>Tools</dt><dd>Excel (VBA macros, pivot tables, VLOOKUP), Word mail merge, Oracle SQL, the pension administration system, the document management system and JIRA.</dd></div><div><dt>Data</dt><dd>None published. The tools, data and reports belong to my employer and its clients.</dd></div></dl>
+<dl class="facts"><div><dt>Team</dt><dd>Special Projects team, UK pensions outsourcing, WTW Manila. April 2024 to present.</dd></div><div><dt>My contribution</dt><dd>I designed the logic for every tool on this page and rewrote the process notes. I also lead the process-documentation reviews for one of my team's two workstreams and train new colleagues.</dd></div><div><dt>AI assistance</dt><dd>I write the logic for each tool: its inputs, steps, checks and outputs. An AI tool turns that logic into VBA code, and I test every tool before my team uses it.</dd></div><div><dt>Tools</dt><dd>Excel (VBA macros, pivot tables, VLOOKUP), Word mail merge, Oracle SQL, the pension administration system, the document management system and JIRA.</dd></div><div><dt>Data</dt><dd>None published. The tools, data and reports belong to my employer and its clients.</dd></div></dl>
 
 <section class="case-section">
   <h2>Business context</h2>
@@ -47,18 +47,19 @@
     <table class="bars">
       <thead class="visually-hidden"><tr><th scope="col">Report</th><th scope="col">Bar</th><th scope="col">Time saved</th></tr></thead>
       <tbody>
-        <tr title="Governance report: 5 hours to 1 hour"><th scope="row">Governance report, quarterly (5 h → 1 h)</th><td><div class="track" style="--zero:0.00%"><div class="bar pos" style="--w:100.00%"></div></div></td><td class="val">4 h</td></tr><tr title="Membership figures: 5 hours to 1 hour"><th scope="row">Membership figures, monthly (5 h → 1 h)</th><td><div class="track" style="--zero:0.00%"><div class="bar pos" style="--w:100.00%"></div></div></td><td class="val">4 h</td></tr><tr title="Retirement case report setup: saves 2 hours"><th scope="row">Retirement case report setup, quarterly</th><td><div class="track" style="--zero:0.00%"><div class="bar pos" style="--w:50.00%"></div></div></td><td class="val">2 h</td></tr><tr title="Membership-movement report: 5 hours to 3 hours"><th scope="row">Membership-movement report, monthly (5 h → 3 h; process notes)</th><td><div class="track" style="--zero:0.00%"><div class="bar pos" style="--w:50.00%"></div></div></td><td class="val">2 h</td></tr><tr title="Leavers report: 1 hour to 15 minutes"><th scope="row">Leavers report, monthly (1 h → 15 min)</th><td><div class="track" style="--zero:0.00%"><div class="bar pos" style="--w:18.75%"></div></div></td><td class="val">45 min</td></tr><tr title="DC transfers file setup: 30 minutes to under 3 minutes (in progress)"><th scope="row">DC transfers file setup, monthly (30 min → under 3; in progress)</th><td><div class="track" style="--zero:0.00%"><div class="bar pos" style="--w:11.25%"></div></div></td><td class="val">27 min</td></tr><tr title="Query printing: 45 minutes to 30 minutes per member"><th scope="row">Query printing, per member (45 → 30 min)</th><td><div class="track" style="--zero:0.00%"><div class="bar pos" style="--w:6.25%"></div></div></td><td class="val">15 min</td></tr>
+        <tr title="Governance report: 5 hours to 1 hour"><th scope="row">Governance report, quarterly (5 h → 1 h)</th><td><div class="track" style="--zero:0.00%"><div class="bar pos" style="--w:100.00%"></div></div></td><td class="val">4 h</td></tr><tr title="Membership figures: 5 hours to 1 hour"><th scope="row">Membership figures, monthly (5 h → 1 h)</th><td><div class="track" style="--zero:0.00%"><div class="bar pos" style="--w:100.00%"></div></div></td><td class="val">4 h</td></tr><tr title="Membership-movement report: 5 hours to 3 hours"><th scope="row">Membership-movement report, monthly (5 h → 3 h; process notes)</th><td><div class="track" style="--zero:0.00%"><div class="bar pos" style="--w:50.00%"></div></div></td><td class="val">2 h</td></tr><tr title="Leavers report: 1 hour to 15 minutes"><th scope="row">Leavers report, monthly (1 h → 15 min)</th><td><div class="track" style="--zero:0.00%"><div class="bar pos" style="--w:18.75%"></div></div></td><td class="val">45 min</td></tr><tr title="DC transfers file setup: 30 minutes to under 3 minutes"><th scope="row">DC transfers file setup, monthly (30 min → under 3)</th><td><div class="track" style="--zero:0.00%"><div class="bar pos" style="--w:11.25%"></div></div></td><td class="val">27 min</td></tr><tr title="Query printing: 45 minutes to 30 minutes per member"><th scope="row">Query printing, per member (45 → 30 min)</th><td><div class="track" style="--zero:0.00%"><div class="bar pos" style="--w:6.25%"></div></div></td><td class="val">15 min</td></tr>
       </tbody>
     </table>
   </div>
-  <p class="chart-note">Approximate run times before and after each change, not a formal time study. The membership-movement saving came from rewritten process notes; the others from Excel macros. The DC transfers macro is still being built.</p>
+  <p class="chart-note">Run times before and after each change, from a time study with my team leader. The membership-movement saving came from rewritten process notes; the others from Excel macros.</p>
 </figure>
 
 <section class="case-section">
   <h2>What I built and changed</h2>
   <ul>
-    <li><strong>Report macros.</strong> Each macro takes the system extracts, sets up the working file and builds the final report, so the remaining time goes on review. The governance and membership-figures macros cut a five-hour job to about one hour, including the review.</li>
-    <li><strong>Lookup and printing tools.</strong> A lookup tool works across several large files to set up the quarterly retirement case report and saves about two hours. A printing macro prints each query case and saves it with its reference number for upload, cutting handling from 45 to 30 minutes per member.</li>
+    <li><strong>Report macros.</strong> Each macro takes the system extracts, sets up the working file and builds the final report, so the remaining time goes on review. The governance and membership-figures macros cut a five-hour job to about one hour, including the review, and the DC transfers macro sets up the monthly working file in under three minutes instead of 30.</li>
+    <li><strong>Printing macro.</strong> Prints each query case and saves it with its reference number for upload, cutting handling from 45 to 30 minutes per member.</li>
+    <li><strong>In development: retirement lookup tool.</strong> The quarterly retirement data report needs lookups across several large files, and opening them by hand on our virtual desktops is slow. The tool does the lookups in one pass and is expected to save about two hours per run.</li>
     <li><strong>Process notes.</strong> I rewrote the notes for 9 of the 50 work types that drew the heaviest error feedback from UK reviewers. Since then, those reports have consistently received sign-off. I also wrote the notes for a newly onboarded membership-movement report, which cut its processing time from five hours to three.</li>
     <li><strong>Process-notes tracker.</strong> An Excel tracker lists every process note the team uses and flags those that need updating because of UK legislation changes, new processes, or errors.</li>
     <li><strong>Survey run guide.</strong> Colleagues kept making errors when filtering 2,000+ survey entries down to a final list of 800: missed exclusions, duplicates and case-code priorities. I rewrote and taught the run guide, and now everyone gets it right on the first try.</li>
@@ -73,9 +74,9 @@
 <section class="case-section">
   <h2>Limitations</h2>
   <ul>
-    <li>Times are approximate, from my own runs before and after each change.</li>
+    <li>Times come from a time study with my team leader and reflect typical runs.</li>
     <li>The tools work on my employer's files and systems, so they cannot be shared or run outside them.</li>
-    <li>The DC transfers macro is still in progress.</li>
+    <li>The retirement lookup tool is still in development, so its saving is an estimate.</li>
   </ul>
 </section>
 
