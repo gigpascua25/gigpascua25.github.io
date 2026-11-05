@@ -8,6 +8,7 @@ I am a Senior Associate at WTW, where I prepare monthly and quarterly UK pension
 
 | Project | Summary | My contribution | Tools | Code |
 |---|---|---|---|---|
+| [Report automation at work](https://gigpascua25.github.io/projects/work-report-automation.html) | Excel macros and rewritten process notes that cut preparation time for recurring UK pension reports (two reports from about 5 hours to 1). | My day job at WTW; designed and built the tools. | Excel (VBA), with AI assistance | Not published (employer systems and data) |
 | [Collections reporting pipeline](https://gigpascua25.github.io/projects/collections-pipeline.html) | ELT pipeline from signed contracts to a Power BI collections dashboard and an automated weekly email. | Solo capstone; built the entire solution. | Python, SQL (PostgreSQL on Supabase), Power BI | Not published (built on the bootcamp's data architecture) |
 | [LLM-assisted grant classification](https://gigpascua25.github.io/projects/grant-tagging-llm.html) | Suggests three ranked biodiversity targets per grant, each with a verified evidence quotation. | Team of three; wrote all of the Python code. | Python, OpenAI API, pandas | [notebook](projects/grant-tagging-llm/pbsap_grant_tagging.ipynb) |
 | [Customer activity versus declared income](https://gigpascua25.github.io/projects/aml-alert-triage.html) | Compares customers' 2025 transactions with their declared income for an AML team (synthetic data). | Team of six; wrote the executive summary and business context, and carried out Investigation 4 (this analysis). | SQL (BigQuery), Python | [notebook](projects/aml-alert-triage/aml_declared_profile_vs_behaviour.ipynb) |
@@ -22,4 +23,4 @@ No client or partner records are published. Notebooks have their outputs cleared
 
 ## Contact
 
-gigpascua.25@gmail.com · [LinkedIn](https://www.linkedin.com/in/gigpascua)
+gigpascua.25@gmail.com · [LinkedIn](https://www.linkedin.com/in/gigpascua) · [Resume (PDF)](assets/Giovani_Pascua_Resume.pdf)

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Report automation at work | Giovani Pascua</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Excel macros and rewritten process notes that cut the time spent preparing recurring UK pension reports at WTW. No code, data or client names are published.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Atkinson+Hyperlegible+Next:ital,wght@0,400..800;1,400&display=swap">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+  <header class="site-head">
+    <div class="site-brand"><a class="site-name" href="../index.html">Giovani Pascua</a><span class="site-role">Data Analyst</span></div>
+    <nav class="site-nav" aria-label="Site">
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#contact">Contact</a>
+      <a href="https://github.com/gigpascua25">GitHub</a>
+    </nav>
+  </header>
+</div>
+<main id="main" class="wrap">
+  <article class="case">
+    <header class="case-top">
+      <a class="back" href="../index.html#projects">All projects</a>
+      <h1>Report automation at work</h1>
+      <p class="lede">Excel macros and rewritten process notes that cut the time my team spends preparing recurring UK pension reports. This is my day job at WTW, so no code, data or client names are published.</p>
+    </header>
+
+<dl class="facts"><div><dt>Team</dt><dd>Special Projects team, UK pensions outsourcing, WTW Manila. April 2024 to present.</dd></div><div><dt>My contribution</dt><dd>I designed and built the tools on this page and rewrote the process notes. I also lead the process-documentation reviews for one of my team's two workstreams and train new colleagues.</dd></div><div><dt>AI assistance</dt><dd>I use AI tools to help write the VBA code. I design the steps, the checks and the outputs, and review and test every tool myself.</dd></div><div><dt>Tools</dt><dd>Excel (VBA macros, pivot tables, VLOOKUP, mail merge), the pension administration system, the document management system and JIRA.</dd></div><div><dt>Data</dt><dd>None published. The tools, data and reports belong to my employer and its clients.</dd></div></dl>
+
+<section class="case-section">
+  <h2>Business context</h2>
+  <p>My team produces statistics, KPI and accounting reports about UK pension administration for 77 schemes in three business groups. In a typical period I run 15–20 monthly reports, 5 quarterly reports and at least 5 weekly tasks, and report case volumes and SLA attainment to UK project team leads. One monthly SLA report alone covers more than 1,000 billable cases. Each week I also run a SQL query supplied by the UK team on case-completion data and refresh the dataset behind the operations team's Power BI dashboard.</p>
+  <p>Much of that time went on setting up working files by hand and on repeated manual checks. The question I kept asking was which of those steps a tool or a clearer set of instructions could take over.</p>
+</section>
+
+<figure class="chart">
+  <figcaption class="chart-title">Time saved per run, by report</figcaption>
+  <div class="chart-scroll">
+    <table class="bars">
+      <thead class="visually-hidden"><tr><th scope="col">Report</th><th scope="col">Bar</th><th scope="col">Time saved</th></tr></thead>
+      <tbody>
+        <tr title="Governance report: 5 hours to 1 hour"><th scope="row">Governance report, quarterly (5 h → 1 h)</th><td><div class="track" style="--zero:0.00%"><div class="bar pos" style="--w:100.00%"></div></div></td><td class="val">4 h</td></tr><tr title="Membership figures: 5 hours to 1 hour"><th scope="row">Membership figures, monthly (5 h → 1 h)</th><td><div class="track" style="--zero:0.00%"><div class="bar pos" style="--w:100.00%"></div></div></td><td class="val">4 h</td></tr><tr title="Retirement case report setup: saves 2 hours"><th scope="row">Retirement case report setup, quarterly</th><td><div class="track" style="--zero:0.00%"><div class="bar pos" style="--w:50.00%"></div></div></td><td class="val">2 h</td></tr><tr title="Membership-movement report: 5 hours to 3 hours"><th scope="row">Membership-movement report, monthly (5 h → 3 h; process notes)</th><td><div class="track" style="--zero:0.00%"><div class="bar pos" style="--w:50.00%"></div></div></td><td class="val">2 h</td></tr><tr title="Leavers report: 1 hour to 15 minutes"><th scope="row">Leavers report, monthly (1 h → 15 min)</th><td><div class="track" style="--zero:0.00%"><div class="bar pos" style="--w:18.75%"></div></div></td><td class="val">45 min</td></tr><tr title="DC transfers file setup: 30 minutes to under 3 minutes (in progress)"><th scope="row">DC transfers file setup, monthly (30 min → under 3; in progress)</th><td><div class="track" style="--zero:0.00%"><div class="bar pos" style="--w:11.25%"></div></div></td><td class="val">27 min</td></tr><tr title="Query printing: 45 minutes to 30 minutes per member"><th scope="row">Query printing, per member (45 → 30 min)</th><td><div class="track" style="--zero:0.00%"><div class="bar pos" style="--w:6.25%"></div></div></td><td class="val">15 min</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="chart-note">Approximate run times before and after each change, not a formal time study. The membership-movement saving came from rewritten process notes; the others from Excel macros. The DC transfers macro is still being built.</p>
+</figure>
+
+<section class="case-section">
+  <h2>What I built and changed</h2>
+  <ul>
+    <li><strong>Report macros.</strong> Each macro takes the system extracts, sets up the working file and builds the final report, so the remaining time goes on review. The governance and membership-figures macros cut a five-hour job to about one hour, including the review.</li>
+    <li><strong>Lookup and printing tools.</strong> A lookup tool works across several large files to set up the quarterly retirement case report and saves about two hours. A printing macro prints each query case and saves it with its reference number for upload, cutting handling from 45 to 30 minutes per member.</li>
+    <li><strong>Process notes.</strong> I rewrote the notes for 9 of the 50 work types that drew the heaviest error feedback from UK reviewers. Since then, those reports have consistently received sign-off. I also wrote the notes for a newly onboarded membership-movement report, which cut its processing time from five hours to three.</li>
+    <li><strong>Process-notes tracker.</strong> An Excel tracker lists every process note the team uses and flags those that need updating because of UK legislation changes, new processes, or errors.</li>
+    <li><strong>Survey run guide.</strong> Colleagues kept making errors when filtering 2,000+ survey entries down to a final list of 800: missed exclusions, duplicates and case-code priorities. I rewrote and taught the run guide, and now everyone gets it right on the first try.</li>
+  </ul>
+</section>
+
+<section class="case-section">
+  <h2>Key figures</h2>
+  <dl class="glance"><div><dt>Monthly reports I run</dt><span class="leader" aria-hidden="true"></span><dd>15–20</dd></div><div><dt>Quarterly reports I run</dt><span class="leader" aria-hidden="true"></span><dd>5</dd></div><div><dt>Schemes covered by my team's workstream</dt><span class="leader" aria-hidden="true"></span><dd>77</dd></div><div><dt>Work types with rewritten process notes</dt><span class="leader" aria-hidden="true"></span><dd>9 of 50</dd></div><div><dt>Processes I train new colleagues on</dt><span class="leader" aria-hidden="true"></span><dd>7</dd></div></dl>
+</section>
+
+<section class="case-section">
+  <h2>Limitations</h2>
+  <ul>
+    <li>Times are approximate, from my own runs before and after each change.</li>
+    <li>The tools work on my employer's files and systems, so they cannot be shared or run outside them.</li>
+    <li>The DC transfers macro is still in progress.</li>
+  </ul>
+</section>
+
+<section class="case-section">
+  <h2>Code</h2>
+  <p>Not published, because the macros are built on my employer's systems and data. I am happy to walk through how each tool works in an interview.</p>
+</section>
+
+    <nav class="pager" aria-label="More projects"><a class="next" href="collections-pipeline.html"><small>Next project</small><span>Collections reporting pipeline</span></a></nav>
+  </article>
+</main>
+<div class="wrap">
+  <footer class="site-foot">
+    <p>Giovani Pascua, Quezon City, Philippines. Project data on this site is aggregated or synthetic. No client or partner records are published.</p>
+  </footer>
+</div>
+</body>
+</html>
