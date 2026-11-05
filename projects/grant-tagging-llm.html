@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Grant tagging with an LLM | Giovani Pascua</title>
+<title>LLM-assisted grant classification | Giovani Pascua</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="A Python pipeline that reads each grant's objectives and returns three ranked biodiversity targets, each backed by a quote a reviewer can check.">
+<meta name="description" content="A Python pipeline that uses a large language model to suggest three ranked biodiversity targets for each conservation grant, each supported by a quotation verified against the grant text.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Atkinson+Hyperlegible+Next:ital,wght@0,400..800;1,400&display=swap">
@@ -29,66 +29,62 @@
   <article class="case">
     <header class="case-top">
       <a class="back" href="../index.html#projects">All projects</a>
-      <h1>Tagging conservation grants with an LLM</h1>
-      <p class="lede">A Python pipeline that reads each grant's objectives and returns three ranked biodiversity targets, each backed by a quote a reviewer can check.</p>
+      <h1>LLM-assisted grant classification</h1>
+      <p class="lede">A Python pipeline that uses a large language model to suggest three ranked biodiversity targets for each conservation grant, each supported by a quotation verified against the grant text.</p>
     </header>
     
-<dl class="facts">
-  <div><dt>Role</dt><dd>Team of three, working for a Philippine conservation foundation. I wrote all of the Python.</dd></div>
-  <div><dt>Tools</dt><dd>Python, pandas and the OpenAI API (gpt-4o-mini) in Google Colab.</dd></div>
-  <div><dt>Data</dt><dd>339 grants tagged by program managers and 201 untagged grants from the foundation's portfolio. None of it is published, and the foundation is not named.</dd></div>
-</dl>
+<dl class="facts"><div><dt>Team</dt><dd>Team of three. The project partner was a Philippine conservation foundation, which is not named here.</dd></div><div><dt>My contribution</dt><dd>I wrote all of the Python code for the classification pipeline described below.</dd></div><div><dt>AI assistance</dt><dd>I used AI tools to help draft the code, and reviewed and tested it myself.</dd></div><div><dt>Tools</dt><dd>Python, pandas and the OpenAI API (gpt-4o-mini) in Google Colab.</dd></div><div><dt>Data</dt><dd>339 grants tagged by the foundation's program managers and 201 untagged grants. None of this data is published.</dd></div></dl>
 
 <section class="case-section">
-  <h2>The question</h2>
-  <p>The foundation has to show funders how its grants line up with the 23 targets of the Philippine Biodiversity Strategy and Action Plan, 2024–2040. Program managers tag each grant by hand. We asked two things: can a model replicate the 339 human tags, and if it can, can it tag the 201 grants nobody has tagged yet?</p>
+  <h2>Business question</h2>
+  <p>The foundation reports to funders on how its grants align with the 23 targets of the Philippine Biodiversity Strategy and Action Plan (PBSAP) 2024–2040. Program managers currently tag each grant by hand. The team set out to answer two questions: can a language model reproduce the 339 existing human tags, and, if so, can it tag the 201 grants that have not yet been tagged?</p>
 </section>
 
 <section class="case-section">
-  <h2>What I did</h2>
+  <h2>How the pipeline works</h2>
   <ol>
-    <li>Held the framework as data: 5 themes, 23 targets and every indicator. The model returns only a target number, and the notebook looks up the name, description and theme, so an impossible pair such as Target 3 under Theme 5 cannot occur.</li>
-    <li>Wrote one prompt per grant in five parts (task, context, input, constraints, output). It carries the full framework, seven worked examples of human tagging, and tie-break rules for the target pairs the framework itself blurs.</li>
-    <li>Asked for three ranked targets instead of one. Grants usually touch several targets, and a single answer throws that information away.</li>
-    <li>Checked every evidence quote against the grant's own text, recorded failed calls instead of dropping them, and flagged rows for review: an unverified quote, a shortlist spread across themes, or almost no objectives text.</li>
-    <li>Ran the same pipeline on the tagged set to measure it, then on the untagged set.</li>
+    <li>The PBSAP framework (5 themes, 23 targets and their indicators) is held as data. The model returns only a target number; the pipeline then looks up the target's name, description and theme, so an invalid combination such as Target 3 under Theme 5 cannot occur.</li>
+    <li>Each grant is sent as one prompt in five parts: task, context, input, constraints and output format. The prompt includes the full framework, seven worked examples of human tagging, and tie-break rules for target pairs that the framework does not clearly separate.</li>
+    <li>The model returns three ranked targets rather than one, because most grants relate to several targets.</li>
+    <li>Each evidence quotation is checked against the grant's own text. Failed calls are recorded rather than dropped, and rows are flagged for human review when the quotation cannot be verified, the three suggestions span different themes, or the grant has little or no objectives text.</li>
+    <li>The same pipeline was run first on the tagged grants to measure accuracy, then on the untagged grants.</li>
   </ol>
 </section>
 
 <figure class="chart">
-  <figcaption class="chart-title">How often the model matched the human tag</figcaption>
+  <figcaption class="chart-title">Agreement with the human tags</figcaption>
   <div class="chart-scroll">
     <table class="bars">
       <thead class="visually-hidden"><tr><th scope="col">Category</th><th scope="col">Bar</th><th scope="col">Value</th></tr></thead>
       <tbody>
-        <tr title="Right target anywhere in the top 3: 88.79%"><th scope="row">Right target anywhere in the top 3</th><td><div class="track" style="--zero:0.00%"><div class="bar pos" style="--w:100.00%"></div></div></td><td class="val">88.79%</td></tr><tr title="Right theme at first pick: 77.58%"><th scope="row">Right theme at first pick</th><td><div class="track" style="--zero:0.00%"><div class="bar pos" style="--w:87.37%"></div></div></td><td class="val">77.58%</td></tr><tr title="Exact target at first pick: 32.74%"><th scope="row">Exact target at first pick</th><td><div class="track" style="--zero:0.00%"><div class="bar pos" style="--w:36.87%"></div></div></td><td class="val">32.74%</td></tr>
+        <tr title="Correct target among the top three: 88.79%"><th scope="row">Correct target among the top three</th><td><div class="track" style="--zero:0.00%"><div class="bar pos" style="--w:100.00%"></div></div></td><td class="val">88.79%</td></tr><tr title="Correct theme at first suggestion: 77.58%"><th scope="row">Correct theme at first suggestion</th><td><div class="track" style="--zero:0.00%"><div class="bar pos" style="--w:87.37%"></div></div></td><td class="val">77.58%</td></tr><tr title="Correct target at first suggestion: 32.74%"><th scope="row">Correct target at first suggestion</th><td><div class="track" style="--zero:0.00%"><div class="bar pos" style="--w:36.87%"></div></div></td><td class="val">32.74%</td></tr>
       </tbody>
     </table>
   </div>
-  <p class="chart-note">Measured on the 339 human-tagged grants. These are in-sample figures: the same grants informed the prompt rules.</p>
+  <p class="chart-note">Measured on the 339 human-tagged grants. All figures are in-sample: the prompt rules were tuned on the same grants.</p>
 </figure>
 
 <section class="case-section">
-  <h2>At a glance</h2>
-  <dl class="glance"><div><dt>Human-tagged grants tested</dt><span class="leader" aria-hidden="true"></span><dd>339</dd></div><div><dt>Right target in the shortlist</dt><span class="leader" aria-hidden="true"></span><dd>88.79%</dd></div><div><dt>Evidence quote found in the text</dt><span class="leader" aria-hidden="true"></span><dd>304 of 339</dd></div><div><dt>Untagged grants tagged</dt><span class="leader" aria-hidden="true"></span><dd>201</dd></div><div><dt>Of those, with no objectives text</dt><span class="leader" aria-hidden="true"></span><dd>187</dd></div></dl>
+  <h2>Key figures</h2>
+  <dl class="glance"><div><dt>Human-tagged grants tested</dt><span class="leader" aria-hidden="true"></span><dd>339</dd></div><div><dt>Correct target among the top three</dt><span class="leader" aria-hidden="true"></span><dd>301 of 339 (88.79%)</dd></div><div><dt>Evidence quotations verified in the text</dt><span class="leader" aria-hidden="true"></span><dd>304 of 339</dd></div><div><dt>Untagged grants processed</dt><span class="leader" aria-hidden="true"></span><dd>201</dd></div><div><dt>Untagged grants with no objectives text</dt><span class="leader" aria-hidden="true"></span><dd>187</dd></div></dl>
 </section>
 
 <section class="case-section">
-  <h2>What I found</h2>
+  <h2>Findings</h2>
   <ul>
-    <li><strong>The output format mattered more than the rules.</strong> Sharper rules and worked examples did not move accuracy beyond the margin of error across four runs. Changing the answer to a ranked shortlist of three did.</li>
-    <li><strong>The model knows the area better than the exact target.</strong> It picks the right theme first 77.58% of the time but the exact target only 32.74%. That makes it a drafting aid: a reviewer confirms one of three suggestions instead of choosing from 23.</li>
-    <li><strong>The untagged set is thin.</strong> 187 of the 201 untagged grants have no objectives text, so they are tagged from the title alone and every one is flagged for review.</li>
+    <li><strong>Changing the output format improved accuracy more than adding rules.</strong> Adding tie-break rules and worked examples to a single-answer prompt did not improve accuracy beyond run-to-run variation. Asking for a ranked shortlist of three targets did.</li>
+    <li><strong>Theme-level accuracy is higher than target-level accuracy.</strong> The first suggestion matched the theme of the human tag for 77.58% of grants, but the exact target for 32.74%. The tool is therefore best used as a drafting aid, with reviewers choosing among three suggestions instead of 23 targets.</li>
+    <li><strong>Most untagged grants lack objectives text.</strong> 187 of the 201 untagged grants have no objectives, so they were tagged from the title alone and every one was flagged for review.</li>
   </ul>
 </section>
 
 <section class="case-section">
-  <h2>Limits I flagged</h2>
+  <h2>Limitations</h2>
   <ul>
     <li>All accuracy figures are in-sample.</li>
-    <li>Program managers tag by the target that receives the largest share of the budget, and the files carry one total amount with no breakdown.</li>
-    <li>Targets 5 and 9 share an identical indicator list in the source document, so grants between them are ambiguous in the framework itself.</li>
-    <li>One target is enforced at rank 1, so grants that genuinely serve several targets are flattened.</li>
+    <li>Program managers tag each grant by the target that receives the largest share of its budget, but the files contain only a total amount, with no breakdown.</li>
+    <li>Targets 5 and 9 share an identical list of indicators in the source document, so grants that fall between them are ambiguous within the framework itself.</li>
+    <li>Only one target is accepted as the first choice, so grants that genuinely serve several targets are simplified.</li>
   </ul>
 </section>
 
@@ -97,17 +93,17 @@
   <div class="files">
     <a class="file-link" href="https://github.com/gigpascua25/gigpascua25.github.io/blob/main/projects/grant-tagging-llm/pbsap_grant_tagging.ipynb">
       <strong>pbsap_grant_tagging.ipynb</strong>
-      <span>The complete prompt and pipeline. Grant records, the seven worked examples and the foundation's name are withheld; outputs are cleared.</span>
+      <span>The complete prompt and pipeline. Grant records, the seven worked examples and the foundation's name are withheld, and outputs are cleared.</span>
     </a>
   </div>
 </section>
 
-    <nav class="pager" aria-label="More projects"><a href="collections-pipeline.html"><small>Previous project</small><span>Collections pipeline</span></a><a class="next" href="aml-alert-triage.html"><small>Next project</small><span>Spending against declared income</span></a></nav>
+    <nav class="pager" aria-label="More projects"><a href="collections-pipeline.html"><small>Previous project</small><span>Collections reporting pipeline</span></a><a class="next" href="aml-alert-triage.html"><small>Next project</small><span>Activity versus declared income</span></a></nav>
   </article>
 </main>
 <div class="wrap">
   <footer class="site-foot">
-    <p>Giovani Pascua, data analyst, Quezon City. Project data shown here is aggregated or synthetic; partner records are not published.</p>
+    <p>Giovani Pascua, Quezon City, Philippines. Project data on this site is aggregated or synthetic. No client or partner records are published.</p>
   </footer>
 </div>
 </body>

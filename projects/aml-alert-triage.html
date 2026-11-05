@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Spending against declared income | Giovani Pascua</title>
+<title>Activity versus declared income | Giovani Pascua</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="A check of whether bank customers' 2025 transactions match the income they declared, written for an anti-money-laundering team with more alerts than investigators.">
+<meta name="description" content="An analysis for a bank's anti-money-laundering team that compares each customer's 2025 transactions with the income declared at account opening. Synthetic bootcamp dataset.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Atkinson+Hyperlegible+Next:ital,wght@0,400..800;1,400&display=swap">
@@ -29,34 +29,30 @@
   <article class="case">
     <header class="case-top">
       <a class="back" href="../index.html#projects">All projects</a>
-      <h1>Spending against declared income</h1>
-      <p class="lede">A check of whether bank customers' 2025 transactions match the income they declared, written for an anti-money-laundering team with more alerts than investigators.</p>
+      <h1>Customer activity versus declared income</h1>
+      <p class="lede">An analysis for a bank's anti-money-laundering team that compares each customer's 2025 transactions with the income declared at account opening. Synthetic bootcamp dataset.</p>
     </header>
     
-<dl class="facts">
-  <div><dt>Role</dt><dd>Team of six. I wrote the executive summary and business context, and Investigation 4, shown here.</dd></div>
-  <div><dt>Tools</dt><dd>SQL on Google BigQuery, Python with pandas, matplotlib and seaborn.</dd></div>
-  <div><dt>Data</dt><dd>A synthetic anti-money-laundering scenario from the bootcamp: 10,000 customers, 46,793 payments and 2,618 alerts in 2025.</dd></div>
-</dl>
+<dl class="facts"><div><dt>Team</dt><dd>Team of six.</dd></div><div><dt>My contribution</dt><dd>I wrote the executive summary and business context for the whole project, and carried out Investigation 4, the declared-income analysis shown on this page. Teammates carried out the other four investigations: the large-payment rule, payments just below the reporting threshold, dormant accounts, and alert prioritization.</dd></div><div><dt>AI assistance</dt><dd>I used AI tools to help draft the code, and reviewed and tested it myself.</dd></div><div><dt>Tools</dt><dd>SQL on Google BigQuery; Python with pandas, matplotlib and seaborn.</dd></div><div><dt>Data</dt><dd>A synthetic anti-money-laundering scenario provided by the bootcamp: 10,000 customers, 46,793 payments and 2,618 alerts in 2025.</dd></div></dl>
 
 <section class="case-section">
-  <h2>The question</h2>
-  <p>The bank's Head of AML Transaction Monitoring has 24 investigators. In 2025 five automatic rules raised 2,618 alerts; 1,623 were opened and 995 were never looked at. She cannot hire, so the team asked which alerts should be looked at first.</p>
-  <p>My investigation asked something simpler: does the money each customer moved look anything like the income they declared when they opened the account?</p>
+  <h2>Business question</h2>
+  <p>In the scenario, a bank's Head of AML Transaction Monitoring leads 24 investigators. In 2025, five automated rules raised 2,618 alerts; 1,623 were investigated and 995 were never opened. With no additional headcount available, the team's question was which alerts should be reviewed first.</p>
+  <p>My investigation addressed a narrower question: does the amount each customer moved in 2025 resemble the income they declared when opening their account?</p>
 </section>
 
 <section class="case-section">
-  <h2>What I did</h2>
+  <h2>Approach</h2>
   <ol>
-    <li>Wrote one BigQuery query that rolls customers, accounts and outgoing payments up to one row per customer, with money moved as a share of declared income. Then I checked the grain: rows equal customers.</li>
-    <li>Cleaned the hand-typed job field. 18 spellings, such as "student", "STUDENT" and " Student", became 5 jobs, checked before and after.</li>
-    <li>Compared each customer only with others who declared the same job, using the median. Ranking everyone together just produces a list of business owners, whose personal income says little about their payments.</li>
-    <li>Joined the result to the alert data to see whether the existing rules already catch these customers.</li>
+    <li>Wrote a BigQuery query that aggregates customers, accounts and outgoing payments to one row per customer, with money moved expressed as a percentage of declared income, and confirmed that the row count equals the customer count.</li>
+    <li>Standardized the free-text occupation field. 18 spellings, such as "student", "STUDENT" and " Student", were mapped to 5 occupations, with counts checked before and after.</li>
+    <li>Compared each customer only with customers who declared the same occupation, using the median. A single ranking across all customers would mainly surface business owners, whose personal income says little about their account activity.</li>
+    <li>Joined the results to the alert data to test whether the existing rules already capture these customers.</li>
   </ol>
 </section>
 
 <figure class="chart">
-  <figcaption class="chart-title">Typical share of declared income moved in 2025, by declared job</figcaption>
+  <figcaption class="chart-title">Median share of declared income moved in 2025, by declared occupation</figcaption>
   <div class="chart-scroll">
     <table class="bars">
       <thead class="visually-hidden"><tr><th scope="col">Category</th><th scope="col">Bar</th><th scope="col">Value</th></tr></thead>
@@ -65,30 +61,30 @@
       </tbody>
     </table>
   </div>
-  <p class="chart-note">Medians across 8,843 customers with a job and an income on record. Four of the five job groups are shown; the notebook has all five.</p>
+  <p class="chart-note">Medians across 8,843 customers with an occupation and an income on record. Four of the five occupation groups are shown; the notebook includes all five.</p>
 </figure>
 
 <section class="case-section">
-  <h2>At a glance</h2>
-  <dl class="glance"><div><dt>Customers compared</dt><span class="leader" aria-hidden="true"></span><dd>8,843</dd></div><div><dt>Moved more than their declared income</dt><span class="leader" aria-hidden="true"></span><dd>469</dd></div><div><dt>Of those, already alerted</dt><span class="leader" aria-hidden="true"></span><dd>about 3 in 4</dd></div><div><dt>Never alerted</dt><span class="leader" aria-hidden="true"></span><dd>about 120</dd></div><div><dt>Largest single payment among them</dt><span class="leader" aria-hidden="true"></span><dd>PHP 479,111</dd></div></dl>
+  <h2>Key figures</h2>
+  <dl class="glance"><div><dt>Customers compared</dt><span class="leader" aria-hidden="true"></span><dd>8,843</dd></div><div><dt>Moved more than their declared income</dt><span class="leader" aria-hidden="true"></span><dd>469</dd></div><div><dt>Of those, already alerted</dt><span class="leader" aria-hidden="true"></span><dd>about three in four</dd></div><div><dt>Of those, never alerted</dt><span class="leader" aria-hidden="true"></span><dd>about 120</dd></div><div><dt>Largest single payment among those never alerted</dt><span class="leader" aria-hidden="true"></span><dd>PHP 479,111</dd></div></dl>
 </section>
 
 <section class="case-section">
-  <h2>What I found</h2>
+  <h2>Findings</h2>
   <ul>
-    <li><strong>The gap is largest where few people expect it.</strong> A typical student moved 7.7% of declared income and a typical unemployed customer 6.0%, against 0.8% for professionals. Recruiting students and people out of work to move money is a documented pattern, but a student passing on family money looks the same, so this marks accounts for review, not people.</li>
-    <li><strong>It should not become a sixth alert rule.</strong> About three quarters of the 469 customers who moved more than their declared income had already raised an alert, against 4% of all customers. A new rule would add work without adding much coverage.</li>
-    <li><strong>The ones who slipped through share one trait.</strong> About 120 never raised an alert, and none of them made a single payment of PHP 500,000 or more. The largest rule looks at one payment at a time, so payments that each stay under the line never trigger it.</li>
+    <li><strong>The largest gaps are among students and unemployed customers.</strong> The median student moved 7.7% of declared income and the median unemployed customer 6.0%, compared with 0.8% for professionals and 0.4% for business owners. This is consistent with a documented money-mule recruitment pattern, but legitimate activity, such as a student passing on family support, looks the same. The measure identifies accounts for review, not wrongdoing.</li>
+    <li><strong>The measure should not become a new alert rule.</strong> About three in four of the 469 customers who moved more than their declared income had already raised an alert, compared with 4% of all customers. A new rule would add workload with little additional coverage.</li>
+    <li><strong>The customers who were missed share one characteristic.</strong> About 120 of them never raised an alert, and none made a single payment of PHP 500,000 or more. The largest rule assesses one payment at a time, so customers whose individual payments stay below that threshold are never flagged.</li>
   </ul>
 </section>
 
 <section class="case-section">
-  <h2>Limits I flagged</h2>
+  <h2>Limitations</h2>
   <ul>
-    <li>Declared income was written down by the customer at onboarding, never verified, and may be years old.</li>
+    <li>Declared income is recorded by the customer at account opening, is not verified, and may be several years old.</li>
     <li>Money moved includes transfers between a customer's own accounts.</li>
-    <li>The data does not say what period declared income covers, so only comparisons between job groups are meaningful.</li>
-    <li>Nothing here identifies wrongdoing. It produces a list of accounts worth a human look.</li>
+    <li>The data does not state the period that declared income covers, so only comparisons between occupation groups are meaningful.</li>
+    <li>None of this identifies wrongdoing. The output is a list of accounts that merit human review.</li>
   </ul>
 </section>
 
@@ -97,17 +93,17 @@
   <div class="files">
     <a class="file-link" href="https://github.com/gigpascua25/gigpascua25.github.io/blob/main/projects/aml-alert-triage/aml_declared_profile_vs_behaviour.ipynb">
       <strong>aml_declared_profile_vs_behaviour.ipynb</strong>
-      <span>My sections of the team notebook. Project and dataset names are placeholders; outputs are cleared.</span>
+      <span>My sections of the team notebook. Project and dataset names are replaced with placeholders, and outputs are cleared.</span>
     </a>
   </div>
 </section>
 
-    <nav class="pager" aria-label="More projects"><a href="grant-tagging-llm.html"><small>Previous project</small><span>Grant tagging with an LLM</span></a><a class="next" href="discount-margin-analysis.html"><small>Next project</small><span>Where a retailer leaks margin</span></a></nav>
+    <nav class="pager" aria-label="More projects"><a href="grant-tagging-llm.html"><small>Previous project</small><span>LLM-assisted grant classification</span></a><a class="next" href="discount-margin-analysis.html"><small>Next project</small><span>Margin leakage analysis</span></a></nav>
   </article>
 </main>
 <div class="wrap">
   <footer class="site-foot">
-    <p>Giovani Pascua, data analyst, Quezon City. Project data shown here is aggregated or synthetic; partner records are not published.</p>
+    <p>Giovani Pascua, Quezon City, Philippines. Project data on this site is aggregated or synthetic. No client or partner records are published.</p>
   </footer>
 </div>
 </body>

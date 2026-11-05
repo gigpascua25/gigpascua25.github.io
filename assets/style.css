@@ -225,7 +225,7 @@ p, ul, ol, dl, figure { margin: 0; }
 
 .facts { display: grid; border-top: 2px solid var(--ink); max-width: 52rem; }
 .facts div {
-  display: grid; grid-template-columns: minmax(0, 7rem) minmax(0, 1fr); gap: 1.25rem;
+  display: grid; grid-template-columns: minmax(0, 9.5rem) minmax(0, 1fr); gap: 1.25rem;
   padding-block: 0.75rem; border-bottom: 1px solid var(--rule);
 }
 .facts dt { font-weight: 700; }
@@ -332,3 +332,8 @@ code {
 .shot figcaption { font-size: var(--step--1); color: var(--ink-2); line-height: 1.5; max-width: var(--measure); }
 .shot figcaption strong { color: var(--ink); }
 .shot .credit { display: block; margin-top: 0.2rem; color: var(--ink); font-weight: 700; }
+
+/* Grid children may shrink below their content width; wide tables scroll inside .chart-scroll */
+.case > *, .chart > * { min-width: 0; }
+.case-section > *, .files > * { min-width: 0; }
+.file-link strong { overflow-wrap: anywhere; }

@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Where a retailer leaks margin | Giovani Pascua</title>
+<title>Margin leakage analysis | Giovani Pascua</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="An analysis of 51,290 e-commerce sales lines that traces four years of flat margin to deep discounting.">
+<meta name="description" content="An analysis of 51,290 e-commerce order lines that tests five explanations for four years of flat profit margin and finds deep discounting most strongly associated with losses.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Atkinson+Hyperlegible+Next:ital,wght@0,400..800;1,400&display=swap">
@@ -29,28 +29,24 @@
   <article class="case">
     <header class="case-top">
       <a class="back" href="../index.html#projects">All projects</a>
-      <h1>Where a profitable retailer leaks margin</h1>
-      <p class="lede">An analysis of 51,290 e-commerce sales lines that traces four years of flat margin to deep discounting.</p>
+      <h1>Margin leakage analysis</h1>
+      <p class="lede">An analysis of 51,290 e-commerce order lines that tests five explanations for four years of flat profit margin and finds deep discounting most strongly associated with losses.</p>
     </header>
     
-<dl class="facts">
-  <div><dt>Role</dt><dd>Team of six. I reported discounting as a major contributor to profit leakage, added the Ralph Lauren precedent, and presented the discount findings.</dd></div>
-  <div><dt>Tools</dt><dd>Spreadsheets, with AI-assisted insight generation from a structured prompt sheet.</dd></div>
-  <div><dt>Data</dt><dd>A global e-commerce retailer, 2014–2017: 51,290 sales lines, 25,728 orders, 1,970 returned orders, across 165 countries.</dd></div>
-</dl>
+<dl class="facts"><div><dt>Team</dt><dd>Team of six.</dd></div><div><dt>My contribution</dt><dd>I investigated whether discounting explains the profit leakage, added a comparable case from Ralph Lauren, and presented the two slides on the discount findings. Data preparation, the other hypothesis tests and the final recommendations were team work.</dd></div><div><dt>Tools</dt><dd>Spreadsheets, with AI-assisted exploration guided by the bootcamp's structured prompt sheet.</dd></div><div><dt>Data</dt><dd>A global e-commerce retailer, 2014–2017: 51,290 order lines, 25,728 orders and 1,970 returned orders across 165 countries.</dd></div></dl>
 
 <section class="case-section">
-  <h2>The question</h2>
-  <p>Sales grew from about $2.26M in 2014 to $4.30M in 2017, but margin barely moved, from 11.0% to 11.7%. The business is profitable. We asked where profit is leaking, what appears to drive it, and what management can realistically do about it.</p>
+  <h2>Business question</h2>
+  <p>Sales grew from about $2.26M in 2014 to $4.30M in 2017, but profit margin barely moved, from 11.0% to 11.7%. The business is profitable. The team asked where profit is leaking, what appears to drive it, and what management can realistically do about it.</p>
 </section>
 
 <section class="case-section">
-  <h2>What we did</h2>
+  <h2>Approach</h2>
   <ol>
-    <li>Joined orders, returns and regional leads. We removed 63 duplicate return rows, rebuilt the broken Canada region join, and confirmed the totals still reconciled to the source to the cent.</li>
-    <li>Tested five explanations for the low margin: discounting, product mix, geography, returns and customer segment.</li>
-    <li>Measured margin by discount depth to find where sales start losing money.</li>
-    <li>Turned the result into a staged recommendation with an illustrative scenario and a pilot.</li>
+    <li>The team joined orders, returns and regional leads, removed 63 duplicate return rows, rebuilt a broken region join for Canada, and confirmed that totals still reconciled to the source to the cent.</li>
+    <li>Five explanations for the low margin were tested: discounting, product mix, geography, returns and customer segment. My part was the discounting analysis.</li>
+    <li>Margin was measured by discount band to find where sales begin to lose money.</li>
+    <li>The results were turned into a staged recommendation, with an illustrative scenario and a regional pilot.</li>
   </ol>
 </section>
 
@@ -60,53 +56,53 @@
     <table class="bars">
       <thead class="visually-hidden"><tr><th scope="col">Category</th><th scope="col">Bar</th><th scope="col">Value</th></tr></thead>
       <tbody>
-        <tr title="Sales discounted beyond 20%: −$815.0K"><th scope="row">Sales discounted beyond 20%</th><td><div class="track" style="--zero:100.00%"><div class="bar neg" style="--w:100.00%"></div></div></td><td class="val loss">−$815.0K</td></tr><tr title="Returned orders: −$136.6K"><th scope="row">Returned orders</th><td><div class="track" style="--zero:100.00%"><div class="bar neg" style="--w:16.76%"></div></div></td><td class="val loss">−$136.6K</td></tr>
+        <tr title="Sales discounted by more than 20%: −$815.0K"><th scope="row">Sales discounted by more than 20%</th><td><div class="track" style="--zero:100.00%"><div class="bar neg" style="--w:100.00%"></div></div></td><td class="val loss">−$815.0K</td></tr><tr title="Returned orders: −$136.6K"><th scope="row">Returned orders</th><td><div class="track" style="--zero:100.00%"><div class="bar neg" style="--w:16.76%"></div></div></td><td class="val loss">−$136.6K</td></tr>
       </tbody>
     </table>
   </div>
-  <p class="chart-note">Losses summed across 2014–2017. The discount figure is loss on deeply discounted lines, not guaranteed recoverable profit. The dataset has no currency column, so dollar totals are approximate.</p>
+  <p class="chart-note">Totals for 2014–2017. The discount figure is the net loss on deeply discounted lines, not guaranteed recoverable profit. The dataset has no currency column, so dollar figures are approximate.</p>
 </figure>
 
 <section class="case-section">
-  <h2>At a glance</h2>
-  <dl class="glance"><div><dt>Total profit</dt><span class="leader" aria-hidden="true"></span><dd>$1.47M</dd></div><div><dt>Overall margin</dt><span class="leader" aria-hidden="true"></span><dd>11.6%</dd></div><div><dt>Margin at full price</dt><span class="leader" aria-hidden="true"></span><dd>about 25%</dd></div><div><dt>Return rate (industry benchmark about 10%)</dt><span class="leader" aria-hidden="true"></span><dd>7.66%</dd></div><div><dt>Loss on sales discounted beyond 20%</dt><span class="leader" aria-hidden="true"></span><dd class="loss">−$815K</dd></div></dl>
+  <h2>Key figures</h2>
+  <dl class="glance"><div><dt>Total profit</dt><span class="leader" aria-hidden="true"></span><dd>$1.47M</dd></div><div><dt>Overall margin</dt><span class="leader" aria-hidden="true"></span><dd>11.6%</dd></div><div><dt>Margin at full price</dt><span class="leader" aria-hidden="true"></span><dd>about 25%</dd></div><div><dt>Return rate (industry benchmark about 10%)</dt><span class="leader" aria-hidden="true"></span><dd>7.66%</dd></div><div><dt>Net loss on sales discounted by more than 20%</dt><span class="leader" aria-hidden="true"></span><dd class="loss">−$815K</dd></div></dl>
 </section>
 
 <section class="case-section">
-  <h2>What I found</h2>
-  <p class="mine">I presented these two findings in the team's deck.</p>
+  <h2>Findings</h2>
+  <p class="mine">The two findings below are my part of the analysis, which I presented in the team's deck.</p>
   <ul>
-    <li><strong>Discounts cost far more than returns.</strong> Return-related losses come to about $136,600, while sales discounted beyond 20% lost about $815,000, more than half of total profit. The data has no return reasons, so returns are a secondary opportunity.</li>
-    <li><strong>Margin collapses with discount depth.</strong> Full-price sales keep about 25 cents of every dollar. Margin crosses zero at roughly a 20–30% discount and collapses past 30%. Losses begin in the 21–30% band, which is why the gate is set at 30%: everyday promotions stay friction-free and the severe losses stop.</li>
+    <li><strong>Discounting costs considerably more than returns.</strong> Return-related losses total about $136,600, while sales discounted by more than 20% lost about $815,000, more than half of total profit. The data records no reasons for returns, so returns are a secondary opportunity.</li>
+    <li><strong>Margin falls sharply as discounts deepen.</strong> Full-price sales retain about 25 cents of every dollar. Margin crosses zero at a discount of roughly 20–30% and declines steeply beyond 30%. Losses begin in the 21–30% band, which is why the proposed approval threshold is set at 30%: routine promotions continue unaffected while the largest losses are controlled.</li>
   </ul>
-  <p>The team ruled out the other explanations. All 17 sub-categories earn 21–32% at full price, and the three customer segments all sit between 11.5% and 12%.</p>
+  <p>The team's other tests did not support the alternative explanations. All 17 sub-categories earn 21–32% at full price, and the three customer segments all fall between 11.5% and 12% margin.</p>
 </section>
 
 <section class="case-section">
-  <h2>What we recommended</h2>
+  <h2>Recommendations</h2>
   <ul>
-    <li>Put a gate on discounts above 30%, with approval for exceptions.</li>
-    <li>Pilot it for 90 days in Western Asia, which has real sales volume and a negative margin.</li>
-    <li>Roll it out company-wide only if profit improves without an unacceptable fall in volume.</li>
+    <li>Require approval for discounts above 30%, with a documented exception process.</li>
+    <li>Pilot the policy for 90 days in Western Asia, a region with meaningful sales volume and a negative margin.</li>
+    <li>Roll the policy out company-wide only if profit improves without an unacceptable fall in sales volume.</li>
   </ul>
-  <p>As precedent, Ralph Lauren deliberately cut markdowns from 2017 and grew margin without losing comparable sales. It is a premium brand and price sensitivity may differ, which is another reason to pilot first.</p>
+  <p>As a comparable case, I added Ralph Lauren, which deliberately reduced markdowns from 2017 and expanded margins without losing comparable-store sales. As a premium brand, its customers may be less price-sensitive, which is a further reason to pilot before rolling out.</p>
 </section>
 
 <section class="case-section">
-  <h2>Limits we flagged</h2>
+  <h2>Limitations</h2>
   <ul>
-    <li>Discounts were not randomised, so every finding is an association, not a cause.</li>
-    <li>There is no cost-of-goods or currency column. We lead with percentages and treat dollar totals as close estimates.</li>
-    <li>Shipping sits outside the profit figure, a level shift that affects every line equally.</li>
+    <li>Discounts were not randomized, so every finding is an association, not proof of cause.</li>
+    <li>The data has no cost-of-goods or currency column. Findings lead with percentages, and dollar totals are treated as close estimates.</li>
+    <li>Shipping costs sit outside the profit figure. They shift every line equally and do not explain the leakage.</li>
   </ul>
 </section>
 
-    <nav class="pager" aria-label="More projects"><a href="aml-alert-triage.html"><small>Previous project</small><span>Spending against declared income</span></a><a class="next" href="discount-governance-dashboard.html"><small>Next project</small><span>Discount governance dashboard</span></a></nav>
+    <nav class="pager" aria-label="More projects"><a href="aml-alert-triage.html"><small>Previous project</small><span>Activity versus declared income</span></a><a class="next" href="discount-governance-dashboard.html"><small>Next project</small><span>Discount governance dashboard</span></a></nav>
   </article>
 </main>
 <div class="wrap">
   <footer class="site-foot">
-    <p>Giovani Pascua, data analyst, Quezon City. Project data shown here is aggregated or synthetic; partner records are not published.</p>
+    <p>Giovani Pascua, Quezon City, Philippines. Project data on this site is aggregated or synthetic. No client or partner records are published.</p>
   </footer>
 </div>
 </body>

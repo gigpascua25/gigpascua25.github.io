@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Giovani Pascua Portfolio</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Data analyst portfolio: a collections pipeline, LLM grant tagging, AML analysis and discount analytics.">
+<meta name="description" content="Data analytics portfolio of Giovani Pascua: a collections reporting pipeline, LLM-assisted grant classification, an AML analysis and discount analytics.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Atkinson+Hyperlegible+Next:ital,wght@0,400..800;1,400&display=swap">
@@ -28,63 +28,63 @@
 <main id="main">
   <div class="wrap">
     <section class="thesis" aria-labelledby="thesis-title">
-      <h1 id="thesis-title">I check that the numbers tie out before I tell the story.</h1>
-      <p>I'm a data analyst in Quezon City. For more than two years I have produced monthly and quarterly reports on UK pension schemes, and I recently completed the Eskwelabs Data Analytics Bootcamp. Each project below shows what I built, the check I relied on, and the limit I flagged.</p>
+      <h1 id="thesis-title">From numbers to action</h1>
+      <p>I am a Senior Associate at WTW, where I prepare monthly and quarterly UK pension scheme and administration reports. I have completed the Eskwelabs Data Analytics Bootcamp and am seeking a data analyst role. Each project below sets out the business question, my specific contribution, the tools used and the limitations.</p>
       <p class="contact-line"><a href="mailto:gigpascua.25@gmail.com">gigpascua.25@gmail.com</a><a href="https://www.linkedin.com/in/gigpascua">LinkedIn</a><a href="https://github.com/gigpascua25">GitHub</a></p>
     </section>
 
     <section class="ledger-section" id="projects" aria-labelledby="projects-title">
-      <div class="ledger-head"><h2 id="projects-title">Projects</h2><span>The figure that mattered</span></div>
+      <div class="ledger-head"><h2 id="projects-title">Projects</h2><span>Key result</span></div>
       <ol class="ledger" role="list">
         <li class="entry">
       <div class="entry-text">
-        <h3><a href="projects/collections-pipeline.html">Collections pipeline for signed contracts</a></h3>
-        <p class="entry-summary">An ELT pipeline that turns 12 signed statements of work into a Power BI collections dashboard and a weekly email for the Collections Lead.</p>
-        <p class="entry-meta">Solo capstone. Python, PostgreSQL on Supabase, Power BI.</p>
+        <h3><a href="projects/collections-pipeline.html">Collections reporting pipeline</a></h3>
+        <p class="entry-summary">An ELT pipeline that loads signed client contracts into PostgreSQL, validates them, and feeds a Power BI collections dashboard and an automated weekly email for a Collections Lead.</p>
+        <p class="entry-meta">Solo bootcamp capstone. Python, SQL (PostgreSQL on Supabase), Power BI.</p>
       </div>
       <div class="entry-figure">
-        <span class="figure">12 of 12</span>
-        <span class="figure-note">contracts set the first payment on the signing date, before the program had run</span>
+        <span class="figure">18 of 18</span>
+        <span class="figure-note">automated data-quality and reconciliation checks pass on every pipeline run</span>
       </div>
     </li><li class="entry">
       <div class="entry-text">
-        <h3><a href="projects/grant-tagging-llm.html">Tagging conservation grants with an LLM</a></h3>
-        <p class="entry-summary">A Python pipeline that reads each grant's objectives and returns three ranked biodiversity targets, each backed by a quote a reviewer can check.</p>
-        <p class="entry-meta">Team of three; I wrote all of the Python. OpenAI API, pandas.</p>
+        <h3><a href="projects/grant-tagging-llm.html">LLM-assisted grant classification</a></h3>
+        <p class="entry-summary">A Python pipeline that uses a large language model to suggest three ranked biodiversity targets for each conservation grant, each supported by a quotation verified against the grant text.</p>
+        <p class="entry-meta">Team of three. I wrote all of the Python code. Python, OpenAI API, pandas.</p>
       </div>
       <div class="entry-figure">
         <span class="figure">88.79%</span>
-        <span class="figure-note">of 339 human-tagged grants had the right target in the model's shortlist of three</span>
+        <span class="figure-note">of 339 human-tagged grants had the correct target among the model's top three suggestions (in-sample)</span>
       </div>
     </li><li class="entry">
       <div class="entry-text">
-        <h3><a href="projects/aml-alert-triage.html">Spending against declared income</a></h3>
-        <p class="entry-summary">A check of whether bank customers' 2025 transactions match the income they declared, written for an anti-money-laundering team with more alerts than investigators.</p>
-        <p class="entry-meta">Team of six; I wrote the executive summary, business context and Investigation 4. SQL on BigQuery, Python.</p>
+        <h3><a href="projects/aml-alert-triage.html">Customer activity versus declared income</a></h3>
+        <p class="entry-summary">An analysis for a bank's anti-money-laundering team that compares each customer's 2025 transactions with the income declared at account opening. Synthetic bootcamp dataset.</p>
+        <p class="entry-meta">Team of six. I wrote the executive summary and business context, and carried out this analysis, one of the team's five investigations. SQL (BigQuery), Python.</p>
       </div>
       <div class="entry-figure">
         <span class="figure">~120</span>
-        <span class="figure-note">customers moved more than a year's declared income without ever raising an alert</span>
+        <span class="figure-note">customers moved more than their declared income in 2025 without triggering any alert</span>
       </div>
     </li><li class="entry">
       <div class="entry-text">
-        <h3><a href="projects/discount-margin-analysis.html">Where a profitable retailer leaks margin</a></h3>
-        <p class="entry-summary">An analysis of 51,290 e-commerce sales lines that traces four years of flat margin to deep discounting.</p>
-        <p class="entry-meta">Team of six; I presented the discount findings. Spreadsheets.</p>
+        <h3><a href="projects/discount-margin-analysis.html">Margin leakage analysis</a></h3>
+        <p class="entry-summary">An analysis of 51,290 e-commerce order lines that tests five explanations for four years of flat profit margin and finds deep discounting most strongly associated with losses.</p>
+        <p class="entry-meta">Team of six. I investigated whether discounting explains the profit leakage and presented those findings. Spreadsheets.</p>
       </div>
       <div class="entry-figure">
         <span class="figure loss">−$815K</span>
-        <span class="figure-note">lost on sales discounted beyond 20%, against $1.47M of total profit</span>
+        <span class="figure-note">net loss on sales discounted by more than 20%, against total profit of $1.47M</span>
       </div>
     </li><li class="entry">
       <div class="entry-text">
         <h3><a href="projects/discount-governance-dashboard.html">Discount governance dashboard</a></h3>
-        <p class="entry-summary">A five-page Power BI report that tests whether deep discounts earn their cost, and where to pilot tighter controls.</p>
-        <p class="entry-meta">Team of six; I designed two of its five pages. Power BI.</p>
+        <p class="entry-summary">A five-page Power BI report that evaluates whether deep discounts justify their cost and recommends where to pilot tighter discount controls.</p>
+        <p class="entry-meta">Team of six. I designed pages 2 and 3 and contributed to the design of page 4. Power BI.</p>
       </div>
       <div class="entry-figure">
         <span class="figure">92.2%</span>
-        <span class="figure-note">of loss exposure came from the 15.3% of revenue discounted above 20%</span>
+        <span class="figure-note">of loss exposure came from the 15.3% of revenue discounted by more than 20%</span>
       </div>
     </li>
       </ol>
@@ -93,14 +93,17 @@
     <section class="two-col" id="about" aria-labelledby="about-title">
       <h2 id="about-title">About</h2>
       <div class="prose">
-        <p>I studied technical communication at Mapúa University, which is mostly the craft of making complicated things easy to follow. Since 2024 I have worked at WTW's Manila delivery center, producing reports on UK pension schemes: membership figures, service-level reports, data-cleaning checks and accounting extracts. I was promoted to Senior Associate in 2026. I also lead my team's process reviews and train new colleagues on the reports I know best.</p>
-        <p>That work taught me that a report is only useful if its numbers reconcile and its instructions can be followed right the first time. I joined Eskwelabs' Data Analytics Bootcamp (Cohort 23, July to October 2026) to add SQL, Python, Power BI and LLM tools to that habit. I'm now looking for a data analyst role.</p>
+        <p>I hold a Bachelor of Arts in Technical Communication from Mapúa University, where I learned to translate complex technical information into clear material for different audiences. I apply the same skill when presenting data findings to non-technical stakeholders.</p>
+        <p>I joined WTW in April 2024 and am now a Senior Associate in Benefits Administration. I prepare monthly and quarterly UK pension scheme and administration reports, including membership figures, service-level reports, data-cleaning checks and accounting extracts. I built Excel macros, with AI assistance, that reduced the preparation time of two recurring reports from about five hours to one. I also lead process-documentation reviews for one of my team's two workstreams and train colleagues on work processes.</p>
+        <p>From July to October 2026 I completed the Eskwelabs Data Analytics Bootcamp (Cohort 23), which covered SQL, Python, Power BI and text analysis with large language models. I am now seeking a data analyst role.</p>
+        <p>I use AI tools to help draft code and formulas, and I review, test and validate every output against the source data before relying on it.</p>
         <dl class="skills">
-          <div><dt>SQL</dt><dd>Google BigQuery, PostgreSQL on Supabase</dd></div>
-          <div><dt>Python</dt><dd>pandas, matplotlib, seaborn, Jupyter and Google Colab</dd></div>
-          <div><dt>Reporting</dt><dd>Power BI, Excel (pivot tables, lookups, VBA macros), automated email reports</dd></div>
-          <div><dt>AI tools</dt><dd>OpenAI API, prompt design, automated evidence checks</dd></div>
-          <div><dt>Working habits</dt><dd>Data validation, reconciliation, process documentation, training others</dd></div>
+          <div><dt>Excel</dt><dd>Daily at work: pivot tables, lookups, data validation and mail merge; macros built with AI assistance</dd></div>
+          <div><dt>SQL</dt><dd>Bootcamp projects in Google BigQuery and PostgreSQL; at work, running prepared queries</dd></div>
+          <div><dt>Python</dt><dd>Bootcamp projects: pandas, matplotlib and seaborn in Jupyter and Google Colab</dd></div>
+          <div><dt>Power BI</dt><dd>Bootcamp projects: report design; at work, maintaining a report's data source</dd></div>
+          <div><dt>LLM tools</dt><dd>Bootcamp project: the OpenAI API for text classification, prompt design and automated evidence checks</dd></div>
+          <div><dt>Ways of working</dt><dd>Data validation, reconciliation, process documentation, training colleagues on work processes</dd></div>
         </dl>
       </div>
     </section>
@@ -118,7 +121,7 @@
 </main>
 <div class="wrap">
   <footer class="site-foot">
-    <p>Giovani Pascua, data analyst, Quezon City. Project data shown here is aggregated or synthetic; partner records are not published.</p>
+    <p>Giovani Pascua, Quezon City, Philippines. Project data on this site is aggregated or synthetic. No client or partner records are published.</p>
   </footer>
 </div>
 </body>
