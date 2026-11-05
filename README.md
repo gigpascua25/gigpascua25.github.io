@@ -2,7 +2,7 @@
 
 Live site: **https://gigpascua25.github.io**
 
-I am a Senior Associate at WTW, where I prepare monthly and quarterly UK pension scheme and administration reports. I have completed the Eskwelabs Data Analytics Bootcamp (Cohort 23, 2026) and am seeking a data analyst role.
+I am a Senior Associate at WTW, where I prepare monthly and quarterly UK pension scheme and administration reports. I have completed the Eskwelabs Data Analytics Bootcamp (Cohort 23, 2026) and am building toward a career in data analysis.
 
 ## Projects
 
