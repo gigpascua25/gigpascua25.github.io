@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Collections pipeline | Giovani Pascua</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="An ELT pipeline that turns 12 signed statements of work into a Power BI collections dashboard and a weekly email for the Collections Lead.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Atkinson+Hyperlegible+Next:ital,wght@0,400..800;1,400&display=swap">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+  <header class="site-head">
+    <a class="site-name" href="../index.html">Giovani Pascua</a>
+    <nav class="site-nav" aria-label="Site">
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#contact">Contact</a>
+      <a href="https://github.com/gigpascua25">GitHub</a>
+    </nav>
+  </header>
+</div>
+<main id="main" class="wrap">
+  <article class="case">
+    <header class="case-top">
+      <a class="back" href="../index.html#projects">All projects</a>
+      <h1>Collections pipeline for signed contracts</h1>
+      <p class="lede">An ELT pipeline that turns 12 signed statements of work into a Power BI collections dashboard and a weekly email for the Collections Lead.</p>
+    </header>
+    
+<dl class="facts">
+  <div><dt>Role</dt><dd>Solo capstone project, assigned by Eskwelabs.</dd></div>
+  <div><dt>Tools</dt><dd>Python in Google Colab, PostgreSQL on Supabase, Power BI, Gmail through smtplib.</dd></div>
+  <div><dt>Data</dt><dd>12 synthetic signed statements of work: 74 columns, 4 client companies, 324 learners. Client payments are synthetic demo data, approved by my mentor.</dd></div>
+</dl>
+
+<section class="case-section">
+  <h2>The question</h2>
+  <p>The brief was to take client contract data, prepare it for storage, and build automated reporting on top. The person it serves is the Collections Lead, who needs five answers:</p>
+  <ul>
+    <li>How much is each client scheduled to pay, and when?</li>
+    <li>How much falls due each month, including the next 30 days?</li>
+    <li>Which payments are overdue, and who should be contacted first?</li>
+    <li>How much contract value was given away in discounts?</li>
+    <li>How much of each contract goes to VAT and withholding tax, and how much cash actually arrives?</li>
+  </ul>
+</section>
+
+<section class="case-section">
+  <h2>What I did</h2>
+  <ol>
+    <li>Loaded the spreadsheet untouched into a <code>raw</code> schema, so any later step can be corrected and rerun without extracting the data again.</li>
+    <li>Built a staging view that names and types each field and tests five business rules before anything reaches the core tables: withholding tax is 2% of the net fee, net payable is gross less withholding, VAT is net fee times the rate, installment percentages total 100%, and every second installment has a due date. All 12 contracts pass.</li>
+    <li>Loaded the contracts into the data architecture the bootcamp provided, linking clients and signers, projects, contract versions, 180 contract terms and 20 payment obligations.</li>
+    <li>Generated synthetic payments so the dashboard could show every status, then built two report views: one row per installment and one row per contract.</li>
+    <li>Connected Power BI to those views and built the weekly email from the same view, so the dashboard and the email always agree.</li>
+    <li>Ended every run with 18 automated checks on row counts and peso totals. A rerun adds nothing and changes nothing.</li>
+  </ol>
+</section>
+
+<section class="case-section wide">
+  <h2>The dashboard</h2>
+  <p>Two Power BI pages, connected to the report views and refreshed when new contracts are loaded. Select a page to open it at full size.</p>
+  <div class="gallery">
+    <figure class="shot">
+      <a href="collections-pipeline/collections-overview.jpg"><img src="collections-pipeline/collections-overview.jpg" width="1600" height="912" alt="Collections overview page as of 27 September 2026: amount due ₱3.43M, collected ₱1.44M (41.9%), balance ₱1.99M and overdue balance ₱853.3K; balance by client and status; amount due by month; and the eight overdue installments to chase, oldest first." loading="lazy" decoding="async"></a>
+      <figcaption><strong>Collections overview.</strong> Who owes the most, when money falls due, and who to chase today, as of 27 September 2026. Payments are synthetic.</figcaption>
+    </figure>
+    <figure class="shot">
+      <a href="collections-pipeline/contract-value.jpg"><img src="collections-pipeline/contract-value.jpg" width="1322" height="756" alt="Contract value page: gross ₱3.49M, VAT ₱373.68K, withholding tax ₱62.28K and net payable ₱3.43M; discount amount by client; contract price to cash by client; and a lookup table with one row per signed contract." loading="lazy" decoding="async"></a>
+      <figcaption><strong>Contract value.</strong> What each signed contract is worth before and after VAT and withholding tax.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="case-section">
+  <h2>At a glance</h2>
+  <dl class="glance"><div><dt>Amount owed</dt><span class="leader" aria-hidden="true"></span><dd>₱3,425,400</dd></div><div><dt>Collected (synthetic)</dt><span class="leader" aria-hidden="true"></span><dd>₱1,435,087.50</dd></div><div><dt>Overdue, on written dates</dt><span class="leader" aria-hidden="true"></span><dd class="loss">₱853,297.50</dd></div><div><dt>Discounts given</dt><span class="leader" aria-hidden="true"></span><dd>₱72,000</dd></div><div><dt>Automated checks per run</dt><span class="leader" aria-hidden="true"></span><dd>18 of 18 pass</dd></div></dl>
+</section>
+
+<section class="case-section">
+  <h2>What I found</h2>
+  <ul>
+    <li><strong>The contract template's due-date rule is wrong.</strong> In all 12 contracts the first payment falls due on the signing date, before the program has run. I kept the written dates and added cleaned ones: program end plus 30 days, which is the contract's own payment term.</li>
+    <li><strong>That choice changes the whole collections list.</strong> On the written dates ₱853,297.50 is overdue. On the cleaned dates nothing is due until 10 October. The binding date has to be agreed before anyone chases a client.</li>
+    <li><strong>Discounts are concentrated.</strong> 64% of all discounts, ₱45,900 of ₱72,000, went to one client, while another received none. Worth a look at the next proposal.</li>
+  </ul>
+</section>
+
+<section class="case-section">
+  <h2>Limits I flagged</h2>
+  <ul>
+    <li>Client payments are synthetic. The next step is loading real payment records.</li>
+    <li>The template holds at most two installments; the pipeline should create one obligation per installment, however many there are.</li>
+    <li>Runs are started by hand in Colab. Scheduling the weekly run, for example with GitHub Actions, is the obvious next step.</li>
+    <li>Only signed contracts are loaded. Proposals could be added as expected revenue.</li>
+  </ul>
+</section>
+
+<section class="case-section">
+  <h2>Code</h2>
+  <p>The notebook, the Power BI file and the source spreadsheet are not published, because the pipeline is built on the bootcamp's own data architecture. I'm happy to walk through the code in an interview.</p>
+</section>
+
+    <nav class="pager" aria-label="More projects"><a class="next" href="grant-tagging-llm.html"><small>Next project</small><span>Grant tagging with an LLM</span></a></nav>
+  </article>
+</main>
+<div class="wrap">
+  <footer class="site-foot">
+    <p>Giovani Pascua, data analyst, Quezon City. Project data shown here is aggregated or synthetic; partner records are not published.</p>
+  </footer>
+</div>
+</body>
+</html>

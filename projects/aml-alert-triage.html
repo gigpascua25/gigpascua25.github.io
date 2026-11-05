@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Spending against declared income | Giovani Pascua</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="A check of whether bank customers' 2025 transactions match the income they declared, written for an anti-money-laundering team with more alerts than investigators.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Atkinson+Hyperlegible+Next:ital,wght@0,400..800;1,400&display=swap">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+  <header class="site-head">
+    <a class="site-name" href="../index.html">Giovani Pascua</a>
+    <nav class="site-nav" aria-label="Site">
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#contact">Contact</a>
+      <a href="https://github.com/gigpascua25">GitHub</a>
+    </nav>
+  </header>
+</div>
+<main id="main" class="wrap">
+  <article class="case">
+    <header class="case-top">
+      <a class="back" href="../index.html#projects">All projects</a>
+      <h1>Spending against declared income</h1>
+      <p class="lede">A check of whether bank customers' 2025 transactions match the income they declared, written for an anti-money-laundering team with more alerts than investigators.</p>
+    </header>
+    
+<dl class="facts">
+  <div><dt>Role</dt><dd>Team of six. I wrote the executive summary and business context, and Investigation 4, shown here.</dd></div>
+  <div><dt>Tools</dt><dd>SQL on Google BigQuery, Python with pandas, matplotlib and seaborn.</dd></div>
+  <div><dt>Data</dt><dd>A synthetic anti-money-laundering scenario from the bootcamp: 10,000 customers, 46,793 payments and 2,618 alerts in 2025.</dd></div>
+</dl>
+
+<section class="case-section">
+  <h2>The question</h2>
+  <p>The bank's Head of AML Transaction Monitoring has 24 investigators. In 2025 five automatic rules raised 2,618 alerts; 1,623 were opened and 995 were never looked at. She cannot hire, so the team asked which alerts should be looked at first.</p>
+  <p>My investigation asked something simpler: does the money each customer moved look anything like the income they declared when they opened the account?</p>
+</section>
+
+<section class="case-section">
+  <h2>What I did</h2>
+  <ol>
+    <li>Wrote one BigQuery query that rolls customers, accounts and outgoing payments up to one row per customer, with money moved as a share of declared income. Then I checked the grain: rows equal customers.</li>
+    <li>Cleaned the hand-typed job field. 18 spellings, such as "student", "STUDENT" and " Student", became 5 jobs, checked before and after.</li>
+    <li>Compared each customer only with others who declared the same job, using the median. Ranking everyone together just produces a list of business owners, whose personal income says little about their payments.</li>
+    <li>Joined the result to the alert data to see whether the existing rules already catch these customers.</li>
+  </ol>
+</section>
+
+<figure class="chart">
+  <figcaption class="chart-title">Typical share of declared income moved in 2025, by declared job</figcaption>
+  <div class="chart-scroll">
+    <table class="bars">
+      <thead class="visually-hidden"><tr><th scope="col">Category</th><th scope="col">Bar</th><th scope="col">Value</th></tr></thead>
+      <tbody>
+        <tr title="Student: 7.7%"><th scope="row">Student</th><td><div class="track" style="--zero:0.00%"><div class="bar pos" style="--w:100.00%"></div></div></td><td class="val">7.7%</td></tr><tr title="Unemployed: 6.0%"><th scope="row">Unemployed</th><td><div class="track" style="--zero:0.00%"><div class="bar pos" style="--w:77.92%"></div></div></td><td class="val">6.0%</td></tr><tr title="Professional: 0.8%"><th scope="row">Professional</th><td><div class="track" style="--zero:0.00%"><div class="bar pos" style="--w:10.39%"></div></div></td><td class="val">0.8%</td></tr><tr title="Business owner: 0.4%"><th scope="row">Business owner</th><td><div class="track" style="--zero:0.00%"><div class="bar pos" style="--w:5.19%"></div></div></td><td class="val">0.4%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="chart-note">Medians across 8,843 customers with a job and an income on record. Four of the five job groups are shown; the notebook has all five.</p>
+</figure>
+
+<section class="case-section">
+  <h2>At a glance</h2>
+  <dl class="glance"><div><dt>Customers compared</dt><span class="leader" aria-hidden="true"></span><dd>8,843</dd></div><div><dt>Moved more than their declared income</dt><span class="leader" aria-hidden="true"></span><dd>469</dd></div><div><dt>Of those, already alerted</dt><span class="leader" aria-hidden="true"></span><dd>about 3 in 4</dd></div><div><dt>Never alerted</dt><span class="leader" aria-hidden="true"></span><dd>about 120</dd></div><div><dt>Largest single payment among them</dt><span class="leader" aria-hidden="true"></span><dd>PHP 479,111</dd></div></dl>
+</section>
+
+<section class="case-section">
+  <h2>What I found</h2>
+  <ul>
+    <li><strong>The gap is largest where few people expect it.</strong> A typical student moved 7.7% of declared income and a typical unemployed customer 6.0%, against 0.8% for professionals. Recruiting students and people out of work to move money is a documented pattern, but a student passing on family money looks the same, so this marks accounts for review, not people.</li>
+    <li><strong>It should not become a sixth alert rule.</strong> About three quarters of the 469 customers who moved more than their declared income had already raised an alert, against 4% of all customers. A new rule would add work without adding much coverage.</li>
+    <li><strong>The ones who slipped through share one trait.</strong> About 120 never raised an alert, and none of them made a single payment of PHP 500,000 or more. The largest rule looks at one payment at a time, so payments that each stay under the line never trigger it.</li>
+  </ul>
+</section>
+
+<section class="case-section">
+  <h2>Limits I flagged</h2>
+  <ul>
+    <li>Declared income was written down by the customer at onboarding, never verified, and may be years old.</li>
+    <li>Money moved includes transfers between a customer's own accounts.</li>
+    <li>The data does not say what period declared income covers, so only comparisons between job groups are meaningful.</li>
+    <li>Nothing here identifies wrongdoing. It produces a list of accounts worth a human look.</li>
+  </ul>
+</section>
+
+<section class="case-section">
+  <h2>Code</h2>
+  <div class="files">
+    <a class="file-link" href="https://github.com/gigpascua25/gigpascua25.github.io/blob/main/projects/aml-alert-triage/aml_declared_profile_vs_behaviour.ipynb">
+      <strong>aml_declared_profile_vs_behaviour.ipynb</strong>
+      <span>My sections of the team notebook. Project and dataset names are placeholders; outputs are cleared.</span>
+    </a>
+  </div>
+</section>
+
+    <nav class="pager" aria-label="More projects"><a href="grant-tagging-llm.html"><small>Previous project</small><span>Grant tagging with an LLM</span></a><a class="next" href="discount-margin-analysis.html"><small>Next project</small><span>Where a retailer leaks margin</span></a></nav>
+  </article>
+</main>
+<div class="wrap">
+  <footer class="site-foot">
+    <p>Giovani Pascua, data analyst, Quezon City. Project data shown here is aggregated or synthetic; partner records are not published.</p>
+  </footer>
+</div>
+</body>
+</html>

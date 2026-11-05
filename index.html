@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Giovani Pascua Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Data analyst portfolio: a collections pipeline, LLM grant tagging, AML analysis and discount analytics.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Atkinson+Hyperlegible+Next:ital,wght@0,400..800;1,400&display=swap">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+  <header class="site-head">
+    <a class="site-name" href="index.html">Giovani Pascua</a>
+    <nav class="site-nav" aria-label="Site">
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="https://github.com/gigpascua25">GitHub</a>
+    </nav>
+  </header>
+</div>
+<main id="main">
+  <div class="wrap">
+    <section class="thesis" aria-labelledby="thesis-title">
+      <h1 id="thesis-title">I check that the numbers tie out before I tell the story.</h1>
+      <p>I'm a data analyst in Quezon City. For more than two years I have produced monthly and quarterly reports on UK pension schemes, and I recently completed the Eskwelabs Data Analytics Bootcamp. Each project below shows what I built, the check I relied on, and the limit I flagged.</p>
+      <p class="contact-line"><a href="mailto:gigpascua.25@gmail.com">gigpascua.25@gmail.com</a><a href="https://www.linkedin.com/in/gigpascua">LinkedIn</a><a href="https://github.com/gigpascua25">GitHub</a></p>
+    </section>
+
+    <section class="ledger-section" id="projects" aria-labelledby="projects-title">
+      <div class="ledger-head"><h2 id="projects-title">Projects</h2><span>The figure that mattered</span></div>
+      <ol class="ledger" role="list">
+        <li class="entry">
+      <div class="entry-text">
+        <h3><a href="projects/collections-pipeline.html">Collections pipeline for signed contracts</a></h3>
+        <p class="entry-summary">An ELT pipeline that turns 12 signed statements of work into a Power BI collections dashboard and a weekly email for the Collections Lead.</p>
+        <p class="entry-meta">Solo capstone. Python, PostgreSQL on Supabase, Power BI.</p>
+      </div>
+      <div class="entry-figure">
+        <span class="figure">12 of 12</span>
+        <span class="figure-note">contracts set the first payment on the signing date, before the program had run</span>
+      </div>
+    </li><li class="entry">
+      <div class="entry-text">
+        <h3><a href="projects/grant-tagging-llm.html">Tagging conservation grants with an LLM</a></h3>
+        <p class="entry-summary">A Python pipeline that reads each grant's objectives and returns three ranked biodiversity targets, each backed by a quote a reviewer can check.</p>
+        <p class="entry-meta">Team of three; I wrote all of the Python. OpenAI API, pandas.</p>
+      </div>
+      <div class="entry-figure">
+        <span class="figure">88.79%</span>
+        <span class="figure-note">of 339 human-tagged grants had the right target in the model's shortlist of three</span>
+      </div>
+    </li><li class="entry">
+      <div class="entry-text">
+        <h3><a href="projects/aml-alert-triage.html">Spending against declared income</a></h3>
+        <p class="entry-summary">A check of whether bank customers' 2025 transactions match the income they declared, written for an anti-money-laundering team with more alerts than investigators.</p>
+        <p class="entry-meta">Team of six; I wrote the executive summary, business context and Investigation 4. SQL on BigQuery, Python.</p>
+      </div>
+      <div class="entry-figure">
+        <span class="figure">~120</span>
+        <span class="figure-note">customers moved more than a year's declared income without ever raising an alert</span>
+      </div>
+    </li><li class="entry">
+      <div class="entry-text">
+        <h3><a href="projects/discount-margin-analysis.html">Where a profitable retailer leaks margin</a></h3>
+        <p class="entry-summary">An analysis of 51,290 e-commerce sales lines that traces four years of flat margin to deep discounting.</p>
+        <p class="entry-meta">Team of six; I presented the discount findings. Spreadsheets.</p>
+      </div>
+      <div class="entry-figure">
+        <span class="figure loss">−$815K</span>
+        <span class="figure-note">lost on sales discounted beyond 20%, against $1.47M of total profit</span>
+      </div>
+    </li><li class="entry">
+      <div class="entry-text">
+        <h3><a href="projects/discount-governance-dashboard.html">Discount governance dashboard</a></h3>
+        <p class="entry-summary">A five-page Power BI report that tests whether deep discounts earn their cost, and where to pilot tighter controls.</p>
+        <p class="entry-meta">Team of six; I designed two of its five pages. Power BI.</p>
+      </div>
+      <div class="entry-figure">
+        <span class="figure">92.2%</span>
+        <span class="figure-note">of loss exposure came from the 15.3% of revenue discounted above 20%</span>
+      </div>
+    </li>
+      </ol>
+    </section>
+
+    <section class="two-col" id="about" aria-labelledby="about-title">
+      <h2 id="about-title">About</h2>
+      <div class="prose">
+        <p>I studied technical communication at Mapúa University, which is mostly the craft of making complicated things easy to follow. Since 2024 I have worked at WTW's Manila delivery center, producing reports on UK pension schemes: membership figures, service-level reports, data-cleaning checks and accounting extracts. I was promoted to Senior Associate in 2026. I also lead my team's process reviews and train new colleagues on the reports I know best.</p>
+        <p>That work taught me that a report is only useful if its numbers reconcile and its instructions can be followed right the first time. I joined Eskwelabs' Data Analytics Bootcamp (Cohort 23, July to October 2026) to add SQL, Python, Power BI and LLM tools to that habit. I'm now looking for a data analyst role.</p>
+        <dl class="skills">
+          <div><dt>SQL</dt><dd>Google BigQuery, PostgreSQL on Supabase</dd></div>
+          <div><dt>Python</dt><dd>pandas, matplotlib, seaborn, Jupyter and Google Colab</dd></div>
+          <div><dt>Reporting</dt><dd>Power BI, Excel (pivot tables, lookups, VBA macros), automated email reports</dd></div>
+          <div><dt>AI tools</dt><dd>OpenAI API, prompt design, automated evidence checks</dd></div>
+          <div><dt>Working habits</dt><dd>Data validation, reconciliation, process documentation, training others</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="two-col" id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact</h2>
+      <dl class="contact-list">
+        <div><dt>Email</dt><span class="leader" aria-hidden="true"></span><dd><a href="mailto:gigpascua.25@gmail.com">gigpascua.25@gmail.com</a></dd></div>
+        <div><dt>LinkedIn</dt><span class="leader" aria-hidden="true"></span><dd><a href="https://www.linkedin.com/in/gigpascua">linkedin.com/in/gigpascua</a></dd></div>
+        <div><dt>GitHub</dt><span class="leader" aria-hidden="true"></span><dd><a href="https://github.com/gigpascua25">github.com/gigpascua25</a></dd></div>
+        <div><dt>Based in</dt><span class="leader" aria-hidden="true"></span><dd>Quezon City, Philippines</dd></div>
+      </dl>
+    </section>
+  </div>
+</main>
+<div class="wrap">
+  <footer class="site-foot">
+    <p>Giovani Pascua, data analyst, Quezon City. Project data shown here is aggregated or synthetic; partner records are not published.</p>
+  </footer>
+</div>
+</body>
+</html>
